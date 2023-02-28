@@ -1,29 +1,25 @@
 package com.Gam.Banking.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Data
-@Builder
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Account implements Serializable {
+public class Account extends AbstractEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String iban;
 
-    private LocalDateTime creationDate;
-
-    private LocalDateTime lastUpdated;
 
    @OneToOne
    @JoinColumn(name="id_user")
